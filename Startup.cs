@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Angular_WebApp.Models;
+using Angular_WebApp.Controllers.Logic;
+using Angular_WebApp.Controllers.Repository;
 
 namespace Angular_WebApp
 {
@@ -23,6 +25,10 @@ namespace Angular_WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WebAppContext>(options => options.UseSqlite("Data Source=WebApp.db"));
+            services.AddTransient<IEmployeeLogic, EmployeeLogic>();
+            services.AddTransient<IEmployeeRepo, EmployeeRepo>();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
