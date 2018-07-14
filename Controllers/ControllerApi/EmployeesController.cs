@@ -18,7 +18,7 @@ namespace Angular_WebApp.Controllers
             _logic = logic;
         }
 
-        [HttpGet]
+        [HttpGet("Employee")]
         public async Task<ActionResult<List<Employee>>> GetEmployeesAsync()
         {
             try
@@ -37,7 +37,45 @@ namespace Angular_WebApp.Controllers
                 return StatusCode(500, e);
             }
 
-}
-        
+        }
+
+        [HttpPost("Employee")]
+        public async Task<ActionResult> PostEmployeeAsync([FromBody] Employee model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                await _logic.PostAsync(model);
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+
+        }
+
+        [HttpPut("UpdateEmployee")]
+        public async Task<ActionResult> PutEmployeeAsync([FromBody] Employee model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                await _logic.PutAsync(model);
+                return Ok(model);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
+
     }
 }

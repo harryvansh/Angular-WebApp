@@ -7,6 +7,8 @@ namespace Angular_WebApp.Controllers.Repository
     public interface IEmployeeRepo
     {
         Task<List<Employee>> GetAllAsync();
+        Task PostAsync(Employee model);
+        Task PutAsync(Employee model);
 
     }
 }

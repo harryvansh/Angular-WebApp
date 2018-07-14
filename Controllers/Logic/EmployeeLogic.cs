@@ -18,5 +18,14 @@ namespace Angular_WebApp.Controllers.Logic
         {
             return await _repo.GetAllAsync();
         }
+        public async Task PostAsync(Employee model)
+        {
+            await _repo.PostAsync(model);
+        }
+
+        public async Task PutAsync(Employee model)
+        {
+            await _repo.PutAsync(model);
+        }
     }
 }

@@ -20,5 +20,17 @@ namespace Angular_WebApp.Controllers.Repository
             var employee = await _context.Employees.Where(e=>true).ToListAsync();
             return employee;
         }
+
+        public async Task PostAsync(Employee model)
+        {
+            _context.Employees.Add(model);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task PutAsync(Employee model)
+        {
+            _context.Employees.Update(model);
+            await _context.SaveChangesAsync();
+        }
     }
 }
