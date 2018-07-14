@@ -9,5 +9,6 @@ namespace Angular_WebApp.Controllers.Logic
          Task<List<Employee>> GetAllAsync();
          Task PostAsync(Employee model);
          Task PutAsync(Employee model);
+         Task DeleteAllAsync();
     }
 }

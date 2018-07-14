@@ -76,6 +76,20 @@ namespace Angular_WebApp.Controllers
                 return StatusCode(500, e);
             }
         }
+        [HttpDelete("DeleteEmployees")]
+        public async Task<ActionResult> DeleteEmployeesAsync()
+        {
+            try
+            {
+                await _logic.DeleteAllAsync();
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e);
+            }
+            
+        }
 
     }
 }

@@ -27,5 +27,9 @@ namespace Angular_WebApp.Controllers.Logic
         {
             await _repo.PutAsync(model);
         }
+        public async Task DeleteAllAsync()
+        {
+            await _repo.DeleteAllAsync();
+        }
     }
 }
