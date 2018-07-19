@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Angular_WebApp.Models;
 using Angular_WebApp.Controllers.Logic;
 using Angular_WebApp.Controllers.Repository;
+using AutoMapper;
 
 namespace Angular_WebApp
 {
@@ -30,6 +31,7 @@ namespace Angular_WebApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAutoMapper();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

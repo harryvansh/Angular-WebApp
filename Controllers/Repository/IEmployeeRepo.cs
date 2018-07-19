@@ -10,6 +10,7 @@ namespace Angular_WebApp.Controllers.Repository
         Task PostAsync(Employee model);
         Task PutAsync(Employee model);
         Task DeleteAllAsync();
+        Task<Employee> GetEmployeeModel(int id);
 
     }
 }

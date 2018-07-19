@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Angular_WebApp.Controllers.Logic;
 using Angular_WebApp.Models;
+using Angular_WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Angular_WebApp.Controllers
@@ -19,7 +20,7 @@ namespace Angular_WebApp.Controllers
         }
 
         [HttpGet("Employee")]
-        public async Task<ActionResult<List<Employee>>> GetEmployeesAsync()
+        public async Task<ActionResult<List<EmployeeViewModel>>> GetEmployeesAsync()
         {
             try
             {
@@ -40,7 +41,7 @@ namespace Angular_WebApp.Controllers
         }
 
         [HttpPost("Employee")]
-        public async Task<ActionResult> PostEmployeeAsync([FromBody] Employee model)
+        public async Task<ActionResult> PostEmployeeAsync([FromBody] EmployeeViewModel model)
         {
             try
             {
@@ -60,7 +61,7 @@ namespace Angular_WebApp.Controllers
         }
 
         [HttpPut("UpdateEmployee")]
-        public async Task<ActionResult> PutEmployeeAsync([FromBody] Employee model)
+        public async Task<ActionResult> PutEmployeeAsync([FromBody] EmployeeViewModel model)
         {
             try
             {

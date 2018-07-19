@@ -50,5 +50,10 @@ namespace Angular_WebApp.Controllers.Repository
             
             await _context.SaveChangesAsync();
         }
+
+        public async Task<Employee> GetEmployeeModel(int id)
+        {
+            return await _context.Employees.Where(c=>c.Id == id).SingleAsync();
+        }
     }
 }

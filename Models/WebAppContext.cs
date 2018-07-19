@@ -13,7 +13,7 @@ namespace Angular_WebApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            //this method is reserved for fluentAPI
         }
 
         public DbSet<Employee> Employees { get; set; }
@@ -27,43 +27,35 @@ namespace Angular_WebApp.Models
         {
             //Get all the entities we added
             var addedEntities = ChangeTracker.Entries().Where(e => e.State == EntityState.Added).ToList();
+            var deletedEntities = ChangeTracker.Entries().Where(e => e.State == EntityState.Deleted).ToList();
+            var editedEntities = ChangeTracker.Entries().Where(e => e.State == EntityState.Modified).ToList();
 
             //populate the CreatedDate, UpdatedDate, and UserId for all new entities
             addedEntities.ForEach(e =>
             {
-                if (e.Entity.GetType().GetProperty("CreatedDate") != null)
-                {
-                    e.Property("CreatedDate").CurrentValue = DateTime.Now;
-                }
-            });
-
-
-            var editedEntities = ChangeTracker.Entries().Where(e => e.State == EntityState.Modified).ToList();
-
+                e.Property("CreatedDate").CurrentValue = DateTime.Now;
+            });     
             //if the entities were just editied, just updated the UpdatedDate, make sure any modifications
             //to UpdatedDate and Created Date are ignored
             editedEntities.ForEach(e =>
             {
-                if (e.Entity.GetType().GetProperty("UpdatedDate") != null)
-                {
-                    e.Property("UpdatedDate").CurrentValue = DateTime.Now;
-                }
+                e.Property("CreatedDate").IsModified = false;
+                e.Property("UpdatedDate").CurrentValue = DateTime.Now;
+                e.Property("DeletedDate").IsModified = false;
+                e.Property("IsDeleted").CurrentValue = false;
             });
-
-            var deletedEntities = ChangeTracker.Entries().Where(e => e.State == EntityState.Deleted).ToList();
 
             //if the entities were just editied, just updated the UpdatedDate, make sure any modifications
             //to UpdatedDate and Created Date are ignored
             deletedEntities.ForEach(e =>
             {
-                if (e.Entity.GetType().GetProperty("DeletedDate") != null)
-                {
-                    e.Property("DeletedDate").CurrentValue = DateTime.Now;
-                    e.Property("IsDeleted").CurrentValue = true;
-                    e.State = EntityState.Unchanged;
-                }
+                e.State = EntityState.Modified;
+                e.Property("CreatedDate").IsModified = false;
+                e.Property("UpdatedDate").CurrentValue = DateTime.Now;
+                e.Property("DeletedDate").CurrentValue = DateTime.Now;
+                e.Property("IsDeleted").CurrentValue = true;
+                
             });
-
 
             return await base.SaveChangesAsync(cancellationToken);
         }
