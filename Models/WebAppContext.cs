@@ -17,6 +17,7 @@ namespace Angular_WebApp.Models
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,7 +35,7 @@ namespace Angular_WebApp.Models
             addedEntities.ForEach(e =>
             {
                 e.Property("CreatedDate").CurrentValue = DateTime.Now;
-            });     
+            });
             //if the entities were just editied, just updated the UpdatedDate, make sure any modifications
             //to UpdatedDate and Created Date are ignored
             editedEntities.ForEach(e =>
@@ -54,7 +55,7 @@ namespace Angular_WebApp.Models
                 e.Property("UpdatedDate").CurrentValue = DateTime.Now;
                 e.Property("DeletedDate").CurrentValue = DateTime.Now;
                 e.Property("IsDeleted").CurrentValue = true;
-                
+
             });
 
             return await base.SaveChangesAsync(cancellationToken);

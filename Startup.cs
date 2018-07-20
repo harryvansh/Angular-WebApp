@@ -28,6 +28,8 @@ namespace Angular_WebApp
             services.AddDbContext<WebAppContext>(options => options.UseSqlite("Data Source=WebApp.db"));
             services.AddTransient<IEmployeeLogic, EmployeeLogic>();
             services.AddTransient<IEmployeeRepo, EmployeeRepo>();
+            services.AddTransient<ICustomerLogic, CustomerLogic>();
+            services.AddTransient<ICustomerRepo, CustomerRepo>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
