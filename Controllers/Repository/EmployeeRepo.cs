@@ -39,7 +39,7 @@ namespace Angular_WebApp.Controllers.Repository
 
             foreach (var employee in employees)
             {
-                tasks.Add(_context.Employees.FindAsync(employee.Id));
+                tasks.Add(_context.Employees.FindAsync(employee.EmployeeId));
             }
             var entities = await Task.WhenAll(tasks);
 
@@ -53,7 +53,7 @@ namespace Angular_WebApp.Controllers.Repository
 
         public async Task<Employee> GetEmployeeModel(int id)
         {
-            return await _context.Employees.Where(c=>c.Id == id).SingleAsync();
+            return await _context.Employees.Where(c=>c.EmployeeId == id).SingleAsync();
         }
     }
 }

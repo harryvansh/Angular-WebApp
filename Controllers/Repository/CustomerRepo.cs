@@ -39,7 +39,7 @@ namespace Angular_WebApp.Controllers.Repository
 
             foreach (var customer in customers)
             {
-                tasks.Add(_context.Customers.FindAsync(customer.Id));
+                tasks.Add(_context.Customers.FindAsync(customer.CustomerId));
             }
             var entities = await Task.WhenAll(tasks);
 
@@ -53,7 +53,7 @@ namespace Angular_WebApp.Controllers.Repository
 
         public async Task<Customer> GetCustomerModel(int id)
         {
-            return await _context.Customers.Where(c=>c.Id == id).SingleAsync();
+            return await _context.Customers.Where(c=>c.CustomerId == id).SingleAsync();
         }
     }
 }
