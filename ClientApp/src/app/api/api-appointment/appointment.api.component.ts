@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
     selector: "appointment-api",
     templateUrl: "./appointment.api.component.html"
 })
-export class AppointmentApiComponent implements OnInit {
+export class ApiAppointmentComponent implements OnInit {
     private readonly _http: HttpClient;
     public readonly _baseUrl: string;
     public appointments: AppointmentModel[];
@@ -30,13 +30,12 @@ export class AppointmentApiComponent implements OnInit {
 }
 
 interface AppointmentModel {
-    CustomerId: number,
+    customerId: number,
     firstName: string,
-    MiddleName: string,
+    middleName: string,
     lastName: string,
-    displayName: string,
-    PreferredName: string,
-    Birthday: Date,
-    EmployeeId: number
+    preferredName: string,
+    birthday: Date;
+    employeeId: number
 }
 

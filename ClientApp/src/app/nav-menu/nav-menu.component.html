@@ -8,5 +8,10 @@
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
+                <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+                    <a [routerLink]='["/appointment"]'>
+                        <span class='glyphicon glyphicon-home'></span> Appointment
+                    </a>
+                </li>
             </ul>
     </div>

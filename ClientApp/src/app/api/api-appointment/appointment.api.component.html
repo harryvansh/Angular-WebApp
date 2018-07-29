@@ -1,0 +1,28 @@
+<h2>Api</h2>
+<h3>{{_baseUrl}}</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>CustomerId</th>
+            <th>FirstNAme</th>
+            <th>MiddleName</th>
+            <th>LastName</th>
+            <th>PreferredName</th>
+            <th>Birthday</th>
+            <th>EmployeeId</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let appointment of appointments">
+            <td>{{appointment.customerId}}</td>
+            <td>{{appointment.firstName}}</td>
+            <td>{{appointment.middleName}}</td>
+            <td>{{appointment.lastName}}</td>
+            <td>{{appointment.preferredName}}</td>
+            <td>{{appointment.birthday | date}}</td>
+            <td>{{appointment.employeeId}}</td>
+        </tr>
+    </tbody>
+</table>

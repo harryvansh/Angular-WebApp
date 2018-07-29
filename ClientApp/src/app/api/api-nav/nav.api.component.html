@@ -1,0 +1,12 @@
+<div class='navbar navbar-inverse'>
+  <div class='navbar-header'>
+      <a class='navbar-brand' [routerLink]='["/appointment"]'>Appointment_Api</a>
+  </div>        
+      <ul class='nav navbar-nav'>
+          <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]="[{ outlets: { primary: [''], api: ['appointment'] } }]">
+                  <span class='glyphicon glyphicon-home'></span> Appointment
+              </a>
+          </li>
+      </ul>
+</div>
