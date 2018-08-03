@@ -1,12 +1,19 @@
-<div class='navbar navbar-inverse'>
+<div class='navbar'>
   <div class='navbar-header'>
-      <a class='navbar-brand' [routerLink]='["/appointment"]'>Appointment_Api</a>
+      <a class='navbar-brand' [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">Appointment_Api</a>
   </div>        
       <ul class='nav navbar-nav'>
           <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]="[{ outlets: { primary: [''], api: ['appointment'] } }]">
-                  <span class='glyphicon glyphicon-home'></span> Appointment
+              <a [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">
+                  <span class='glyphicon glyphicon-home'></span> Appointments
               </a>
           </li>
       </ul>
+      <ul class='nav navbar-nav'>
+        <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <a [routerLink]="['/appointment', {outlets: {'api': ['employees']}}]">
+                <span class='glyphicon glyphicon-home'></span> Employees
+            </a>
+        </li>
+    </ul>
 </div>

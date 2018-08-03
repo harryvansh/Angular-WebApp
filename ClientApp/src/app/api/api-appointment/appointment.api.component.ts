@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiAppointmentComponent implements OnInit {
     private readonly _http: HttpClient;
-    public readonly _baseUrl: string;
-    public appointments: AppointmentModel[];
+    private readonly _baseUrl: string;
+    private appointments: AppointmentModel[];
     
 
     constructor(http: HttpClient, @Inject('BASE_URL') baseUrl:string) {
