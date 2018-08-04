@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Angular_WebApp.Models
@@ -12,14 +13,9 @@ namespace Angular_WebApp.Models
         public string MiddleName { get; set; }
         [Required]
         public string LastName { get; set; }
-
         public string DisplayName { get; set; }
         public string PreferredName { get; set; }
-
-        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Birthday { get; set; }
-
-        public int EmployeeId {get; set;}
-        public Employee Employee {get; set;}
+        public List<Appointment> Appointment { get; set; }
     }
 }

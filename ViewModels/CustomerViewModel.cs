@@ -13,10 +13,7 @@ namespace Angular_WebApp.ViewModels
         [Required]
         public string LastName { get; set; }
         public string PreferredName { get; set; }
-
-        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Birthday { get; set; }
 
-        public int EmployeeId{get; set;}
     }
 }
