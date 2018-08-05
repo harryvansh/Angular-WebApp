@@ -30,6 +30,8 @@ namespace Angular_WebApp
             services.AddTransient<IEmployeeRepo, EmployeeRepo>();
             services.AddTransient<ICustomerLogic, CustomerLogic>();
             services.AddTransient<ICustomerRepo, CustomerRepo>();
+            services.AddTransient<IAppointmentLogic, AppointmentLogic>();
+            services.AddTransient<IAppointmentRepo, AppointmentRepo>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
