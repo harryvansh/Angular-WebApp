@@ -8,6 +8,7 @@ namespace Angular_WebApp.ViewModels
     public class AppointmentViewModel
     {
         public string CustomerFirstName {get; set;}
+        public string CustomerMiddleName {get; set;}
         public string CustomerLastName {get; set;}
         public int EmployeeId {get; set;}
         public DateTime AppointmentTime {get; set;}

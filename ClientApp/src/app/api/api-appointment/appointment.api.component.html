@@ -1,24 +1,19 @@
+<a [routerLink]="['/appointment', {outlets: {'api': ['appointment-input']}}]">Add New Appointment</a>
 <table class="table">
     <thead>
         <tr>
-            <th>CustomerId</th>
-            <th>FirstNAme</th>
-            <th>MiddleName</th>
-            <th>LastName</th>
-            <th>PreferredName</th>
-            <th>Birthday</th>
-            <th>EmployeeId</th>
+            <th>AppointmentId</th>
+            <th>customerId</th>
+            <th>employeeId</th>
+            <th>AppointmentTime</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let appointment of appointments">
+            <td>{{appointment.appointmentId}}</td>
             <td>{{appointment.customerId}}</td>
-            <td>{{appointment.firstName}}</td>
-            <td>{{appointment.middleName}}</td>
-            <td>{{appointment.lastName}}</td>
-            <td>{{appointment.preferredName}}</td>
-            <td>{{appointment.birthday | date}}</td>
             <td>{{appointment.employeeId}}</td>
+            <td>{{appointment.appointmentTime | date:'medium'}}</td>
         </tr>
     </tbody>
 </table>

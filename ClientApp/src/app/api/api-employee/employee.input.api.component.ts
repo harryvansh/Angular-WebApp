@@ -20,7 +20,7 @@ export class ApiEmployeeInputComponent {
             lastName: 'Brigham',
             displayName: 'Dylan A. Brigham',
             knownAs: 'Dylan A. Brigham'
-    }
+    };
 
     constructor( http: HttpClient, @Inject('BASE_URL') baseUrl: string ){
         this._baseUrl = baseUrl;

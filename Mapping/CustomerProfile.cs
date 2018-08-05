@@ -9,7 +9,8 @@ namespace Angular_WebApp.Mapping
         public CustomerProfile()
         {
             CreateMap<Customer,CustomerViewModel>();
-            CreateMap<CustomerViewModel,Customer>();
+            CreateMap<CustomerViewModel,Customer>()
+            .ForMember(dest=>dest.DisplayName, opts=>opts.MapFrom(src=> $"{src.FirstName} {src.LastName}"));
         }
     }
 }

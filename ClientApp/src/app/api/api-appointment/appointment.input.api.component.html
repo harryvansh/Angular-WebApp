@@ -1,0 +1,32 @@
+<h1>Add Employee</h1>
+<form class="form" (ngSubmit)="saveAppointment()" #appointmentForm="ngForm">
+
+    <div class="form-group">
+        <label for="employeeId">Employee</label>
+        <input class="form-control" required [(ngModel)]="_appointment.employeeId" name="employeeId" placeholder="1">
+    </div>
+
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input class="form-control" required [(ngModel)]="_appointment.customerFirstName" name="firstName" placeholder="John">
+    </div>
+
+    <div class="form-group">
+        <label for="middleName">Middle Name</label>
+        <input class="form-control" [(ngModel)]="_appointment.customerMiddleName" name="middleName" placeholder="Middle">
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input class="form-control" required [(ngModel)]="_appointment.customerLastName" name="lastName" placeholder="Doe">
+    </div>
+
+    <div class="form-group">
+        <label for="appointmentTime">Appointment Time</label>
+        <input class="form-control" required [(ngModel)]="_appointment.appointmentTime" name="appointmentTime" placeholder="2018-08-08">
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!appointmentForm.form.valid">Submit</button>
+    <button class="btn btn-default" [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">Back</button>
+
+</form>

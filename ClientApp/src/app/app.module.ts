@@ -14,6 +14,7 @@ import { RouterConfigLoader } from '../../node_modules/@angular/router/src/route
 import { AppointmentComponent } from './Appointment/appointment.component';
 import { ApiEmployeeComponent } from './api/api-employee/employee.api.component';
 import { ApiEmployeeInputComponent } from './api/api-employee/employee.input.api.component';
+import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.input.api.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ApiEmployeeInputComponent } from './api/api-employee/employee.input.api
     ApiNavComponent,
     AppointmentComponent,
     ApiEmployeeComponent,
-    ApiEmployeeInputComponent
+    ApiEmployeeInputComponent,
+    ApiAppointmentInputComponent
 
   ],
   imports: [
@@ -45,7 +47,8 @@ import { ApiEmployeeInputComponent } from './api/api-employee/employee.input.api
           { path: '', component: ApiEmployeeComponent, outlet: 'api' },
           { path: 'appointments', component: ApiAppointmentComponent, outlet: 'api' },
           { path: 'employees', component: ApiEmployeeComponent, outlet: 'api' },
-          { path: 'employee-input', component: ApiEmployeeInputComponent, outlet: 'api' }
+          { path: 'employee-input', component: ApiEmployeeInputComponent, outlet: 'api' },
+          { path: 'appointment-input', component: ApiAppointmentInputComponent, outlet: 'api' }
         ]
       }
     ])

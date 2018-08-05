@@ -34,6 +34,7 @@ namespace Angular_WebApp.Controllers.Logic
                 var customerViewModel = new CustomerViewModel {
                     CustomerId= 0,
                     FirstName= viewModel.CustomerFirstName,
+                    MiddleName = viewModel.CustomerMiddleName,
                     LastName = viewModel.CustomerLastName
                 };
                 await _custoemrLogic.PostAsync(customerViewModel);

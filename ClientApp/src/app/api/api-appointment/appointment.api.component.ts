@@ -24,18 +24,15 @@ export class ApiAppointmentComponent implements OnInit {
             headers: { 'Content-Type': 'application/json' }
         }
 
-        this._http.get<AppointmentModel[]>(this._baseUrl + 'api/Customers/Customer', options).subscribe(result => this.appointments = result);
+        this._http.get<AppointmentModel[]>(this._baseUrl + 'api/Appointments/Appointment', options).subscribe(result => this.appointments = result);
 
     }
 }
 
 interface AppointmentModel {
+    appointmentId: number,
     customerId: number,
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    preferredName: string,
-    birthday: Date;
-    employeeId: number
+    employeeId: number,
+    appointmentTime: Date
 }
 
