@@ -26,6 +26,13 @@
         <input class="form-control" required [(ngModel)]="_appointment.appointmentTime" name="appointmentTime" placeholder="2018-08-08">
     </div>
 
+    <mat-form-field>
+        <input matInput [matDatepicker]="myDatepicker">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+      
+
     <button type="submit" class="btn btn-success" [disabled]="!appointmentForm.form.valid">Submit</button>
     <button class="btn btn-default" [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">Back</button>
 

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -32,8 +34,10 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -51,7 +55,8 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
           { path: 'appointment-input', component: ApiAppointmentInputComponent, outlet: 'api' }
         ]
       }
-    ])
+    ]),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

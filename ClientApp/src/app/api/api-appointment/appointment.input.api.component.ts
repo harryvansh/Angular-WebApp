@@ -1,5 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 const _httpOptions = {
     headers : new HttpHeaders({
