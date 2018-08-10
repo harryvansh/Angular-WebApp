@@ -16,10 +16,10 @@ export class ApiEmployeeInputComponent {
     private readonly _baseUrl: string;
     public _employee:EmployeeForm = {
             employeeId: 0,
-            firstName: 'Dylan',
-            lastName: 'Brigham',
-            displayName: 'Dylan A. Brigham',
-            knownAs: 'Dylan A. Brigham'
+            firstName: '',
+            lastName: '',
+            displayName: '',
+            knownAs: ''
     };
 
     constructor( http: HttpClient, @Inject('BASE_URL') baseUrl: string ){
@@ -29,17 +29,6 @@ export class ApiEmployeeInputComponent {
     
     public saveEmployee()
     {
-
-        
-        // this._employee = {
-        //     employeeId: 0,
-        //     firstName: 'Dylan',
-        //     lastName: 'Brigham',
-        //     displayName: 'Dylan A. Brigham',
-        //     knownAs: 'Dylan A. Brigham'
-        // };
-
-        // this._employee.employeeId = 0;
         console.log("Header: " + _httpOptions.headers);
         console.log("Creating new employee.. " + JSON.stringify(this._employee));
         this._http.post<EmployeeForm>(this._baseUrl + 'api/Employees/Employee', JSON.stringify(this._employee), _httpOptions).subscribe(employee=>this._employee);
