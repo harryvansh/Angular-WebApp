@@ -23,3 +23,4 @@ https://docs.microsoft.com/en-us/ef/core/get-started/netcore/new-db-sqlite
 https://www.thereformedprogrammer.net/updating-many-to-many-relationships-in-entity-framework-core/
 https://docs.microsoft.com/en-us/ef/core/modeling/relationships
 http://hive.rinoy.in/how-to-add-material-ui-components-in-asp-net-core-2-and-angular-web-application/
+https://v5.material.angular.io/components/stepper/overview
