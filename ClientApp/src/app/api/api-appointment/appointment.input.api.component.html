@@ -1,5 +1,93 @@
 <h1>Add Employee</h1>
-<form class="form" (ngSubmit)="saveAppointment()" #appointmentForm="ngForm">
+
+<mat-horizontal-stepper>
+    <mat-step label="1">
+        <div>
+            <ng-template matStepLabel>Select your Barber</ng-template>
+            <mat-form-field>
+                <mat-select required [(ngModel)]="_appointment.employeeId" name="employeeId" placeholder="Employee">
+                    <mat-option *ngFor="let employee of _employees" [value]="employee.employeeId">
+                        {{employee.displayName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step label="2">
+        <div>
+            <ng-template matStepLabel>Fill out your name</ng-template>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" required [(ngModel)]="_appointment.customerFirstName" name="firstName" placeholder="John">
+            </div>
+
+            <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input class="form-control" [(ngModel)]="_appointment.customerMiddleName" name="middleName" placeholder="Middle">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" placeholder="Doe" required [(ngModel)]="_appointment.customerLastName" name="lastName">
+            </div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step label="3">
+        <div>
+            <ng-template matStepLabel>Pick you appointment time</ng-template>
+            <mat-form-field>
+                <input matInput [matDatepicker]="myDatepicker" placeholder="2001/01/01" required [(ngModel)]="_appointment.appointmentTime"
+                    name="appointmentTime">
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+    </mat-step>
+    <mat-step label="4">
+        <div>
+            <ng-template matStepLabel>Confirmation</ng-template>
+            <form class="form" (ngSubmit)="saveAppointment()" #appointmentForm="ngForm">
+                <div>
+                    <label for="Barber Name">Barber Name</label>
+                    <div *ngFor="let employee of _employees">
+                        <p *ngIf="employee.employeeId == _appointment.employeeId">
+                            {{employee.displayName}}
+                        </p>
+                    </div>
+                    <!-- <p>{{_employees.displayName || filter: {employeeId:_appointment.employeeId}}}</p> -->
+                </div>
+                <div>
+                    <label for="firstName">First Name</label>
+                    <p>{{_appointment.customerFirstName}}</p>
+                </div>
+                <div>
+                    <label for="middleName">Middle Name</label>
+                    <p>{{_appointment.customerMiddleName}}</p>
+                </div>
+                <div>
+                    <label for="lastName">Last Name</label>
+                    <p>{{_appointment.customerLastName}}</p>
+                </div>
+                <div>
+                    <label for="Appointment Time">Appointment Time</label>
+                    <p>{{_appointment.appointmentTime}}</p>
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!appointmentForm.form.valid">Submit</button>
+                <button class="btn btn-default" [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">Back</button>
+            </form>
+        </div>
+    </mat-step>
+
+</mat-horizontal-stepper>
+
+
+<!-- <form class="form" (ngSubmit)="saveAppointment()" #appointmentForm="ngForm">
 
     <mat-form-field>
         <mat-select required [(ngModel)]="_appointment.employeeId" name="employeeId" placeholder="Employee">
@@ -36,4 +124,4 @@
     <button type="submit" class="btn btn-success" [disabled]="!appointmentForm.form.valid">Submit</button>
     <button class="btn btn-default" [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">Back</button>
 
-</form>
+</form> -->

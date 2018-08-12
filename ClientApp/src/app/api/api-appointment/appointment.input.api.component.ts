@@ -2,8 +2,8 @@ import { Component, Inject, OnInit, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const _httpOptions = {
-    headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
     })
 };
 @Component({
@@ -13,8 +13,9 @@ const _httpOptions = {
 export class ApiAppointmentInputComponent implements OnInit {
     private readonly _http: HttpClient;
     private readonly _baseUrl: string;
-    private _employees:EmployeeModel[];
-    public _appointment:AppointmentForm = {
+    private _employees: EmployeeModel[];
+    
+    public _appointment: AppointmentForm = {
         employeeId: 0,
         customerFirstName: '',
         customerMiddleName: '',
@@ -22,7 +23,7 @@ export class ApiAppointmentInputComponent implements OnInit {
         appointmentTime: new Date('')
     };
 
-    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl:string) {
+    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this._http = http;
         this._baseUrl = baseUrl;
     }
@@ -30,12 +31,12 @@ export class ApiAppointmentInputComponent implements OnInit {
     ngOnInit() {
         this.GetAllEmployees();
     }
-    
-    public GetAllEmployees(){
+
+    public GetAllEmployees() {
         let options: {
-            headers: {'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         }
-        this._http.get<EmployeeModel[]>(this._baseUrl + 'api/Employees/Employee', options).subscribe(result=> this._employees = result);
+        this._http.get<EmployeeModel[]>(this._baseUrl + 'api/Employees/Employee', options).subscribe(result => this._employees = result);
     }
 
     public saveAppointment() {

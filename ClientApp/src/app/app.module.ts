@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
+import {MatStepperModule, MatStepperIntl} from '@angular/material/stepper';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -37,7 +38,13 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule,
+    MatSelectModule, 
+    MatButtonModule, 
+    MatInputModule, 
+    MatCheckboxModule, 
+    MatDatepickerModule, 
+    MatNativeDateModule, 
+    MatStepperModule,
     RouterModule.forRoot([
       {
         path: '',
