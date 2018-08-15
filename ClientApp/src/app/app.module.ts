@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
-import {MatStepperModule, MatStepperIntl} from '@angular/material/stepper';
+import { MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatNativeDateModule, MatDatepickerModule, MatChipsModule, MatIconModule, MatFormFieldModule } from '@angular/material';
+import { MatStepperModule, MatStepperIntl } from '@angular/material/stepper';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -38,13 +38,17 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatSelectModule, 
-    MatButtonModule, 
-    MatInputModule, 
-    MatCheckboxModule, 
-    MatDatepickerModule, 
-    MatNativeDateModule, 
+    MatSelectModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatStepperModule,
+    MatChipsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -63,7 +67,7 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
         ]
       }
     ]),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

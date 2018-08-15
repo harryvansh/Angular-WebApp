@@ -1,89 +1,109 @@
-<h1>Add Employee</h1>
-
-<mat-horizontal-stepper>
-    <mat-step label="1">
-        <div>
-            <ng-template matStepLabel>Select your Barber</ng-template>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<mat-horizontal-stepper [linear]= "true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+         <ng-template matStepLabel>Select your Barber</ng-template>
+        <form [formGroup]="firstFormGroup">
             <mat-form-field>
-                <mat-select required [(ngModel)]="_appointment.employeeId" name="employeeId" placeholder="Employee">
-                    <mat-option *ngFor="let employee of _employees" [value]="employee.employeeId">
+                <mat-select [(ngModel)]="_appointment.employeeId" name="employeeId" placeholder="Employee" formControlName="firstCtrl">
+                    <mat-option *ngFor="let employee of _employees" [value]="employee.employeeId"  required>
                         {{employee.displayName}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-        </div>
+            <div *ngIf="!_appointment.employeeId">
+                <button mat-button matStepperNext disabled>Next</button>
+            </div>
+            <div *ngIf="_appointment.employeeId">
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
     </mat-step>
-    <mat-step label="2">
-        <div>
-            <ng-template matStepLabel>Fill out your name</ng-template>
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input class="form-control" required [(ngModel)]="_appointment.customerFirstName" name="firstName" placeholder="John">
-            </div>
+    <mat-step [stepControl]="secondFormGroup">
 
-            <div class="form-group">
-                <label for="middleName">Middle Name</label>
-                <input class="form-control" [(ngModel)]="_appointment.customerMiddleName" name="middleName" placeholder="Middle">
-            </div>
-
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input class="form-control" placeholder="Doe" required [(ngModel)]="_appointment.customerLastName" name="lastName">
-            </div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-        </div>
-    </mat-step>
-    <mat-step label="3">
-        <div>
-            <ng-template matStepLabel>Pick you appointment time</ng-template>
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <form [formGroup]="secondFormGroup">
             <mat-form-field>
-                <input matInput [matDatepicker]="myDatepicker" placeholder="2001/01/01" required [(ngModel)]="_appointment.appointmentTime"
+                <input matInput placeholder="First Name" [(ngModel)]="_appointment.customerFirstName" name="firstName" formControlName="secondCtrl" required>
+            </mat-form-field>
+        </form>
+
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+                <input matInput placeholder="Middle Name" [(ngModel)]="_appointment.customerMiddleName" formControlName="secondCtrl" name="middleName">
+            </mat-form-field>
+        </form>
+
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+                <input matInput placeholder="Last Name" [(ngModel)]="_appointment.customerLastName" formControlName="secondCtrl" name="lastName" required>
+            </mat-form-field>
+        </form>
+
+        <div *ngIf="!_appointment.customerFirstName || !_appointment.customerLastName">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext disabled>Next</button>
+        </div>
+        <div *ngIf="_appointment.customerFirstName && _appointment.customerLastName">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <ng-template matStepLabel>Pick you appointment time</ng-template>
+        <form [formGroup]="thirdFormGroup">
+            <mat-form-field>
+                <input matInput [matDatepicker]="myDatepicker" placeholder="Appointment Time" formControlName="thirdCtrl" required [(ngModel)]="_appointment.appointmentTime"
                     name="appointmentTime">
                 <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
                 <mat-datepicker #myDatepicker></mat-datepicker>
             </mat-form-field>
-
+        </form>
+        <div *ngIf="!_appointment.appointmentTime">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext disabled>Next</button>
         </div>
-    </mat-step>
-    <mat-step label="4">
-        <div>
-            <ng-template matStepLabel>Confirmation</ng-template>
-            <form class="form" (ngSubmit)="saveAppointment()" #appointmentForm="ngForm">
-                <div>
-                    <label for="Barber Name">Barber Name</label>
-                    <div *ngFor="let employee of _employees">
-                        <p *ngIf="employee.employeeId == _appointment.employeeId">
-                            {{employee.displayName}}
-                        </p>
-                    </div>
-                    <!-- <p>{{_employees.displayName || filter: {employeeId:_appointment.employeeId}}}</p> -->
-                </div>
-                <div>
-                    <label for="firstName">First Name</label>
-                    <p>{{_appointment.customerFirstName}}</p>
-                </div>
-                <div>
-                    <label for="middleName">Middle Name</label>
-                    <p>{{_appointment.customerMiddleName}}</p>
-                </div>
-                <div>
-                    <label for="lastName">Last Name</label>
-                    <p>{{_appointment.customerLastName}}</p>
-                </div>
-                <div>
-                    <label for="Appointment Time">Appointment Time</label>
-                    <p>{{_appointment.appointmentTime}}</p>
-                </div>
-                <button type="submit" class="btn btn-success" [disabled]="!appointmentForm.form.valid">Submit</button>
-                <button class="btn btn-default" [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">Back</button>
-            </form>
+        <div *ngIf="_appointment.appointmentTime">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
         </div>
-    </mat-step>
 
+    </mat-step>
+    <mat-step>
+
+        <ng-template matStepLabel>Confirmation</ng-template>
+        <form>
+            <div>
+                <label for="Barber Name">Barber Name</label>
+                <div *ngFor="let employee of _employees">
+                    <p *ngIf="employee.employeeId == _appointment.employeeId">
+                        {{employee.displayName}}
+                    </p>
+                </div>
+            </div>
+            <div>
+                <label for="firstName">First Name</label>
+                <p>{{_appointment.customerFirstName}}</p>
+            </div>
+            <div>
+                <label for="middleName">Middle Name</label>
+                <p>{{_appointment.customerMiddleName}}</p>
+            </div>
+            <div>
+                <label for="lastName">Last Name</label>
+                <p>{{_appointment.customerLastName}}</p>
+            </div>
+            <div>
+                <label for="Appointment Time">Appointment Time</label>
+                <p *ngIf="_appointment.appointmentTime">{{_appointment.appointmentTime | date}}</p>
+            </div>
+            <button mat-button (click)="saveAppointment()">Submit</button>
+            <button mat-button [routerLink]="['/appointment', {outlets: {'api': ['appointments']}}]">Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </form>
+
+    </mat-step>
 </mat-horizontal-stepper>
 
 

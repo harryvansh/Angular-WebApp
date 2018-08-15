@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '../../../../node_modules/@angular/forms';
 
 const _httpOptions = {
     headers: new HttpHeaders({
@@ -11,24 +12,40 @@ const _httpOptions = {
     templateUrl: "./appointment.input.api.component.html"
 })
 export class ApiAppointmentInputComponent implements OnInit {
+    public CurrentDate = new Date();
     private readonly _http: HttpClient;
     private readonly _baseUrl: string;
     private _employees: EmployeeModel[];
-    
+    public firstFormGroup: FormGroup;
+    public secondFormGroup: FormGroup;
+    public thirdFormGroup: FormGroup;
+    private _formBuilder:FormBuilder;
+
+
     public _appointment: AppointmentForm = {
-        employeeId: 0,
-        customerFirstName: '',
-        customerMiddleName: '',
-        customerLastName: '',
-        appointmentTime: new Date('')
+        employeeId: undefined,
+        customerFirstName: undefined,
+        customerMiddleName: undefined,
+        customerLastName: undefined,
+        appointmentTime: undefined
     };
 
-    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, formBuilder: FormBuilder) {
         this._http = http;
         this._baseUrl = baseUrl;
+        this._formBuilder = formBuilder;
     }
 
     ngOnInit() {
+        this.firstFormGroup = this._formBuilder.group({
+            firstCtrl: ['', Validators.required]
+        });
+        this.secondFormGroup = this._formBuilder.group({
+            secondCtrl: ['', Validators.required]
+        });
+        this.thirdFormGroup = this._formBuilder.group({
+            thirdCtrl: ['', Validators.required]
+        });
         this.GetAllEmployees();
     }
 
