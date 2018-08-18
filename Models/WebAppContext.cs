@@ -19,6 +19,10 @@ namespace Angular_WebApp.Models
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<ScheduleTime> ScheduleTimes { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
