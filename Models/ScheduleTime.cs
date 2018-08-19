@@ -7,14 +7,8 @@ namespace Angular_WebApp.Models
     public class ScheduleTime : AuditInfo
     {
         public int ScheduleTimeId { get; set; }
-
-        [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:hh.mm tt}", ApplyFormatInEditMode = true)]
-        public DateTime TimeStart { get; set; }
-
-        [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:hh.mm tt}", ApplyFormatInEditMode = true)]
-        public DateTime TimeEnd { get; set; }
+        public string TimeStart { get; set; }
+        public string TimeEnd { get; set; }
 
         [ForeignKey("Schedule")]
         public int ScheduleId { get; set; }

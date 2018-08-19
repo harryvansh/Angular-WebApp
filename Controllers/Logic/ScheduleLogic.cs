@@ -9,36 +9,36 @@ namespace Angular_WebApp.Controllers.Logic
 {
     public class ScheduleLogic : IScheduleLogic
     {
-        private readonly IScheduleRepo _scheduleRepo;
+        private readonly IScheduleRepo _repo;
         private readonly IMapper _mapper;
         
-        public ScheduleLogic(IScheduleRepo scheduleRepo, IMapper mapper)
+        public ScheduleLogic(IScheduleRepo repo, IMapper mapper)
         {
-            _scheduleRepo = scheduleRepo;
+            _repo = repo;
             _mapper = mapper;
         }
 
         public async Task<List<ScheduleViewModel>> GetAllAsync()
         {
-            var Schedules = await _scheduleRepo.GetAllAsync();
+            var Schedules = await _repo.GetAllAsync();
             var viewSchedules = _mapper.Map<List<ScheduleViewModel>>(Schedules);
             return viewSchedules;
         }
         public async Task PostAsync(ScheduleViewModel viewModel)
         {
             var scheduleModel = _mapper.Map<Schedule>(viewModel);
-            var modelId = await _scheduleRepo.PostAsync(scheduleModel);
+            var modelId = await _repo.PostAsync(scheduleModel);
         }
 
         public async Task PutAsync(ScheduleViewModel viewModel)
         {
             var model = _mapper.Map<Schedule>(viewModel);
                         
-            await _scheduleRepo.PutAsync(model);
+            await _repo.PutAsync(model);
         }
         public async Task DeleteAllAsync()
         {
-            await _scheduleRepo.DeleteAllAsync();
+            await _repo.DeleteAllAsync();
         }
     }
 }
