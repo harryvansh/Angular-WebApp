@@ -12,5 +12,6 @@ namespace Angular_WebApp.ViewModels
         
         [DataType(DataType.Time)]
         public DateTime TimeEnd { get; set; }
+         public int ScheduleId { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Angular_WebApp.Models
 {
-    public class ScheduleTime
+    public class ScheduleTime : AuditInfo
     {
         public int ScheduleTimeId { get; set; }
 
