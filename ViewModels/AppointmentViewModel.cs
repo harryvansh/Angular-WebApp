@@ -11,6 +11,9 @@ namespace Angular_WebApp.ViewModels
         public string CustomerMiddleName {get; set;}
         public string CustomerLastName {get; set;}
         public int EmployeeId {get; set;}
+        
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MMM-dd, hh.mm tt}", ApplyFormatInEditMode = true)]
         public DateTime AppointmentTime {get; set;}
 
     }

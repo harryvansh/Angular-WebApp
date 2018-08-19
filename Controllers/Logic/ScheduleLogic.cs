@@ -10,7 +10,6 @@ namespace Angular_WebApp.Controllers.Logic
     public class ScheduleLogic : IScheduleLogic
     {
         private readonly IScheduleRepo _scheduleRepo;
-        private readonly IScheduleTimeRepo _scheduleTimeRepo;
         private readonly IMapper _mapper;
         
         public ScheduleLogic(IScheduleRepo scheduleRepo, IMapper mapper)
@@ -29,12 +28,6 @@ namespace Angular_WebApp.Controllers.Logic
         {
             var scheduleModel = _mapper.Map<Schedule>(viewModel);
             var modelId = await _scheduleRepo.PostAsync(scheduleModel);
-            // foreach(var timeModel in viewModel.ScheduleTime)
-            // {
-            //     timeModel.ScheduleId = modelId;
-            // }
-            // var scheduleTimeModel = _mapper.Map<List<ScheduleTime>>(viewModel.ScheduleTime);
-            // await _scheduleTimeRepo.PostAsync(scheduleTimeModel);
         }
 
         public async Task PutAsync(ScheduleViewModel viewModel)

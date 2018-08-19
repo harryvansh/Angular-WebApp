@@ -34,7 +34,6 @@ namespace Angular_WebApp
             services.AddTransient<IAppointmentRepo, AppointmentRepo>();
             services.AddTransient<IScheduleLogic, ScheduleLogic>();
             services.AddTransient<IScheduleRepo, ScheduleRepo>();
-            services.AddTransient<IScheduleTimeRepo, ScheduleTimeRepo>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

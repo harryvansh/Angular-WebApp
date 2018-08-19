@@ -16,6 +16,9 @@ namespace Angular_WebApp.Models
         [ForeignKey("Employee")]
         public int EmployeeId {get; set;}
         public Employee Employee{get; set;}
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MMM-dd, hh.mm tt}", ApplyFormatInEditMode = true)]
         public DateTime AppointmentTime {get; set;}
     }
 }
