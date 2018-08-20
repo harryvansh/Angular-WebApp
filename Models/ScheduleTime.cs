@@ -9,6 +9,7 @@ namespace Angular_WebApp.Models
         public int ScheduleTimeId { get; set; }
         public string TimeStart { get; set; }
         public string TimeEnd { get; set; }
+        public Boolean IsAvailable { get; set; } = true;
 
         [ForeignKey("Schedule")]
         public int ScheduleId { get; set; }
