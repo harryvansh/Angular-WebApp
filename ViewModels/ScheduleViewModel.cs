@@ -9,6 +9,8 @@ namespace Angular_WebApp.ViewModels
     {
         public int ScheduleId { get; set; }
 
+        public int EmployeeId { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MMM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateStart { get; set; }

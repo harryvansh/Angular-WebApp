@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatNativeDateModule, MatDatepickerModule, MatChipsModule, MatIconModule, MatFormFieldModule } from '@angular/material';
+import { MatSelectModule, MatButtonModule, MatInputModule, MatCheckboxModule, MatNativeDateModule, MatDatepickerModule, MatChipsModule, MatIconModule, MatFormFieldModule, MatAutocompleteModule } from '@angular/material';
 import { MatStepperModule, MatStepperIntl } from '@angular/material/stepper';
 
 import { AppComponent } from './app.component';
@@ -18,6 +18,8 @@ import { AppointmentComponent } from './Appointment/appointment.component';
 import { ApiEmployeeComponent } from './api/api-employee/employee.api.component';
 import { ApiEmployeeInputComponent } from './api/api-employee/employee.input.api.component';
 import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.input.api.component';
+import { AppointmentService } from './api/api-services/services.api.component';
+import { ApiEmployeeScheduleComponent } from './api/api-employee/employee.schedule.api.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
     AppointmentComponent,
     ApiEmployeeComponent,
     ApiEmployeeInputComponent,
-    ApiAppointmentInputComponent
+    ApiAppointmentInputComponent,
+    ApiEmployeeScheduleComponent
 
   ],
   imports: [
@@ -48,6 +51,7 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
     MatChipsModule,
     MatIconModule,
     MatFormFieldModule,
+    MatAutocompleteModule,
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([
       {
@@ -63,13 +67,14 @@ import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.
           { path: 'appointments', component: ApiAppointmentComponent, outlet: 'api' },
           { path: 'employees', component: ApiEmployeeComponent, outlet: 'api' },
           { path: 'employee-input', component: ApiEmployeeInputComponent, outlet: 'api' },
-          { path: 'appointment-input', component: ApiAppointmentInputComponent, outlet: 'api' }
+          { path: 'appointment-input', component: ApiAppointmentInputComponent, outlet: 'api' },
+          { path: 'employee-schedule', component: ApiEmployeeScheduleComponent, outlet: 'api' }
         ]
       }
     ]),
 
   ],
-  providers: [],
+  providers: [AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

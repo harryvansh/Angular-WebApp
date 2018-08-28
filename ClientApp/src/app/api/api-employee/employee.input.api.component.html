@@ -7,6 +7,11 @@
   </div>
 
   <div class="form-group">
+    <label for="middleName">Middle Name</label>
+    <input class="form-control" required [(ngModel)]="_employee.middleName" name="middleName" placeholder="Dan">
+  </div>
+
+  <div class="form-group">
     <label for="lastName">Last Name</label>
     <input class="form-control" required [(ngModel)]="_employee.lastName" name="lastName" placeholder="Doe">
   </div>
@@ -14,11 +19,6 @@
   <div class="form-group">
     <label for="displayName">Display Name</label>
     <input class="form-control" required [(ngModel)]="_employee.displayName" name="displayName" placeholder="John D. Doe">
-  </div>
-
-  <div class="form-group">
-    <label for="displayName">Known As</label>
-    <input class="form-control" required [(ngModel)]="_employee.knownAs" name="knownAs" placeholder="Johnny D. Doe">
   </div>
 
   <button type="submit" class="btn btn-success" [disabled]="!employeeForm.form.valid">Submit</button>

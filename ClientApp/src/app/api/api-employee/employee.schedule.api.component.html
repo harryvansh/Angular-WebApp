@@ -1,0 +1,38 @@
+<div>
+    <mat-form-field>
+        <mat-select [(ngModel)]="scheduleForm.employeeId" placeholder="Select Employee">
+            <mat-option *ngFor="let employee of employees" [value]="employee.employeeId" required>
+                {{employee.displayName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field>
+        <input matInput [matDatepicker]="startPicker" placeholder="Start Date">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="endPicker" placeholder="End Date">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+</div>
+<div>
+    <span>
+       <p>Day: {{daysForm.monday}}</p> 
+       <p>Day: {{daysForm.tuesday}}</p> 
+       <p>Day: {{daysForm.wednesday}}</p> 
+       <p>Day: {{daysForm.thursday}}</p> 
+       <p>Day: {{daysForm.friday}}</p> 
+    </span>
+    <mat-checkbox [(ngModel)]="daysForm.monday">Monday</mat-checkbox>
+    <mat-checkbox [(ngModel)]="daysForm.tuesday">Tuesday</mat-checkbox>
+    <mat-checkbox [(ngModel)]="daysForm.wednesday">Wednesday</mat-checkbox>
+    <mat-checkbox [(ngModel)]="daysForm.thursday">Thursday</mat-checkbox>
+    <mat-checkbox [(ngModel)]="daysForm.friday">Friday</mat-checkbox>
+</div>
+<div>
+    
+</div>

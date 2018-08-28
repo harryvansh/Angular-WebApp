@@ -24,3 +24,4 @@ https://www.thereformedprogrammer.net/updating-many-to-many-relationships-in-ent
 https://docs.microsoft.com/en-us/ef/core/modeling/relationships
 http://hive.rinoy.in/how-to-add-material-ui-components-in-asp-net-core-2-and-angular-web-application/
 https://v5.material.angular.io/components/stepper/overview
+https://medium.com/@balramchavan/best-practices-building-angular-services-using-facade-design-pattern-for-complex-systems-d8c516cb95eb

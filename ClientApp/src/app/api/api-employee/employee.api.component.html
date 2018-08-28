@@ -1,21 +1,23 @@
 <a [routerLink]="['/appointment', {outlets: {'api': ['employee-input']}}]">Add New Employee</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th>EmployeeId</th>
-            <th>FirstNAme</th>
-            <th>LastName</th>
-            <th>DisplayName</th>
-            <th>KnownAs</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employees">
-            <td>{{employee.employeeId}}</td>
-            <td>{{employee.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.displayName}}</td>
-            <td>{{employee.knownAs}}</td>
-        </tr>
-    </tbody>
-</table>
+<br>
+<a [routerLink]="['/appointment', {outlets: {'api': ['employee-schedule']}}]">Set Employee Schedule</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>EmployeeId</th>
+                <th>FirstName</th>
+                <th>MiddleName</th>
+                <th>LastName</th>
+                <th>DisplayName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.employeeId}}</td>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.middleName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.displayName}}</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,44 +1,33 @@
 import { Component, Inject} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-const _httpOptions = {
-    headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
-    })
-};
+import { AppointmentService } from '../api-services/services.api.component';
 
 @Component({
     selector: 'employee-api-input',
     templateUrl: './employee.input.api.component.html'
 })
 export class ApiEmployeeInputComponent {
-    private readonly _http: HttpClient;
-    private readonly _baseUrl: string;
+
     public _employee:EmployeeForm = {
             employeeId: 0,
             firstName: '',
+            middleName: '',
             lastName: '',
-            displayName: '',
-            knownAs: ''
+            displayName: ''
     };
 
-    constructor( http: HttpClient, @Inject('BASE_URL') baseUrl: string ){
-        this._baseUrl = baseUrl;
-        this._http = http;
-    }
+    constructor(private appointmentService:AppointmentService){}
     
-    public saveEmployee()
-    {
-        console.log("Header: " + _httpOptions.headers);
-        console.log("Creating new employee.. " + JSON.stringify(this._employee));
-        this._http.post<EmployeeForm>(this._baseUrl + 'api/Employees/Employee', JSON.stringify(this._employee), _httpOptions).subscribe(employee=>this._employee);
+    public saveEmployee(){
+        this.appointmentService._employeeForm = this._employee;
+        this.appointmentService.saveEmployee();
     }
 }
 
 interface EmployeeForm {
     employeeId: number,
     firstName: string,
+    middleName: string,
     lastName: string,
-    displayName: string,
-    knownAs: string
+    displayName: string
 }
