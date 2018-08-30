@@ -12,6 +12,8 @@ npm install --save @angular/material@5.2.0  @angular/cdk@5.2.0
 npm install --save @angular/animations@5.2.0
  in ClientApp directory or Angular-WebApp (not sure yet)
 
+	
+export ASPNETCORE_ENVIRONMENT=Development
  dotnet build
  dotnet run
  --------------------------------------------
