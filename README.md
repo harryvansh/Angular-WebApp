@@ -11,9 +11,21 @@ dotnet ef database update
 npm install --save @angular/material@5.2.0  @angular/cdk@5.2.0
 npm install --save @angular/animations@5.2.0
  in ClientApp directory or Angular-WebApp (not sure yet)
+------------------------------------------------------------------
+To build in developement mode try the following:
 
+<<<<<<< HEAD
 	
 export ASPNETCORE_ENVIRONMENT=Development
+=======
+[me@linuxbox me]$ export PATH=$PATH:directory
+
+A better way would be to edit your .bash_profile or .profile file (depending on your distribution) to include the above command. That way, it would be done automatically every time you log in.
+
+reference:
+http://www.linuxcommand.org/lc3_wss0010.php
+------------------------------------------------------------------
+>>>>>>> 58b8909adbb6125b39030a63416ae2cd4aa7d4b0
  dotnet build
  dotnet run
  --------------------------------------------
