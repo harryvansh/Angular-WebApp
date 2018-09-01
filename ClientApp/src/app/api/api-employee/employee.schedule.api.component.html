@@ -1,43 +1,50 @@
-<div>
-    <mat-form-field>
-        <mat-select [(ngModel)]="scheduleForm.employeeId" placeholder="Select Employee">
-            <mat-option *ngFor="let employee of employees" [value]="employee.employeeId" required>
-                {{employee.displayName}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-</div>
-<div>
-    <mat-form-field>
-        <input matInput [matDatepicker]="startPicker" placeholder="Start Date">
-        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-        <mat-datepicker #startPicker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput [matDatepicker]="endPicker" placeholder="End Date">
-        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-        <mat-datepicker #endPicker></mat-datepicker>
-    </mat-form-field>
-</div>
-<div>
-    <span>
-       <p>Day: {{daysForm.monday}}</p> 
-       <p>Day: {{daysForm.tuesday}}</p> 
-       <p>Day: {{daysForm.wednesday}}</p> 
-       <p>Day: {{daysForm.thursday}}</p> 
-       <p>Day: {{daysForm.friday}}</p> 
-    </span>
-    <mat-checkbox [(ngModel)]="daysForm.monday">Monday</mat-checkbox>
-    <mat-checkbox [(ngModel)]="daysForm.tuesday">Tuesday</mat-checkbox>
-    <mat-checkbox [(ngModel)]="daysForm.wednesday">Wednesday</mat-checkbox>
-    <mat-checkbox [(ngModel)]="daysForm.thursday">Thursday</mat-checkbox>
-    <mat-checkbox [(ngModel)]="daysForm.friday">Friday</mat-checkbox>
-</div>
-<div>
-    <mat-form-field>
-            <input matInput placeholder="Start Time">
-    </mat-form-field>
-    <mat-form-field>
-            <input matInput placeholder="End Time">
-    </mat-form-field>
-</div>
+<form [formGroup]="scheduleFormGroup">
+    <div>
+        <mat-form-field>
+            <mat-select placeholder="Select Employee" formControlName="employeeId">
+                <mat-option *ngFor="let employee of employees" [value]="employee.employeeId" required>
+                    {{employee.displayName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="startPicker" placeholder="Start Date" formControlName="dateStart">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="endPicker" placeholder="End Date" formControlName="dateEnd">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div formGroupName="days">
+        <mat-checkbox formControlName="monday">Monday</mat-checkbox>
+        <mat-checkbox formControlName="tuesday">Tuesday</mat-checkbox>
+        <mat-checkbox formControlName="wednesday">Wednesday</mat-checkbox>
+        <mat-checkbox formControlName="thursday">Thursday</mat-checkbox>
+        <mat-checkbox formControlName="friday">Friday</mat-checkbox>
+        <mat-checkbox formControlName="saturday">Saturday</mat-checkbox>
+        <mat-checkbox formControlName="sunday">Sunday</mat-checkbox>
+    </div>
+    <div formArrayName="scheduleTime">
+        <button (click)="addStartEndTime()">Add New Times</button>
+
+        <div *ngFor="let group of scheduleFormGroup.get('scheduleTime').controls; let i=index">
+            <div [formGroupName]="i">
+                <mat-form-field>
+                    <input matInput placeholder="Start Time" formControlName="timeStart">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="End Time" formControlName="timeEnd">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</form>
+
+<p>
+    Form Value: {{ scheduleFormGroup.value | json }}
+</p>
