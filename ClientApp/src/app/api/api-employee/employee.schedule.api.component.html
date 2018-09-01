@@ -1,4 +1,4 @@
-<form [formGroup]="scheduleFormGroup">
+<form [formGroup]="scheduleFormGroup" (ngSubmit)="saveSchedule()">
     <div>
         <mat-form-field>
             <mat-select placeholder="Select Employee" formControlName="employeeId">
@@ -29,9 +29,9 @@
         <mat-checkbox formControlName="saturday">Saturday</mat-checkbox>
         <mat-checkbox formControlName="sunday">Sunday</mat-checkbox>
     </div>
-    <div formArrayName="scheduleTime">
-        <button (click)="addStartEndTime()">Add New Times</button>
 
+    <div formArrayName="scheduleTime">
+        <button type="button" (click)="addStartEndTime()">Add New Times</button>
         <div *ngFor="let group of scheduleFormGroup.get('scheduleTime').controls; let i=index">
             <div [formGroupName]="i">
                 <mat-form-field>
@@ -43,8 +43,9 @@
             </div>
         </div>
     </div>
+    <button type="submit" [disabled]="!scheduleFormGroup.valid">Submit</button>
 </form>
 
 <p>
-    Form Value: {{ scheduleFormGroup.value | json }}
+    Form Value: {{ scheduleFormGroup.value | json }} Form Status: {{ scheduleFormGroup.status }}
 </p>

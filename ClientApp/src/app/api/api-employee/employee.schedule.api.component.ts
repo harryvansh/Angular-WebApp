@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AppointmentService } from "../api-services/services.api.component";
-import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 
 @Component({
     selector: 'employee-schedule',
@@ -29,25 +29,25 @@ export class ApiEmployeeScheduleComponent implements OnInit {
 
     ngOnInit() {
         this.scheduleFormGroup = this._formBuilder.group({
-            scheduleId: [''],
-            employeeId:[''],
-            dateStart:[''],
-            dateEnd:[''],
+            scheduleId: [0],
+            employeeId:['',Validators.required],
+            dateStart:['',Validators.required],
+            dateEnd:['',Validators.required],
             days: this._formBuilder.group({
-                monday:[''],
-                tuesday:[''],
-                wednesday:[''],
-                thursday:[''],
-                friday:[''],
-                saturday:[''],
-                sunday:['']
+                monday:[false],
+                tuesday:[false],
+                wednesday:[false],
+                thursday:[false],
+                friday:[false],
+                saturday:[false],
+                sunday:[false]
             }),
            scheduleTime: this._formBuilder.array([
                 this._formBuilder.group({
-                    scheduleTimeId: [''],
+                    scheduleTimeId: [0],
                     timeStart: [''],
                     timeEnd: [''],
-                    scheduleId: ['']
+                    scheduleId: [0]
                     
                 })
             ])
@@ -61,7 +61,7 @@ export class ApiEmployeeScheduleComponent implements OnInit {
         return this.scheduleFormGroup.get('scheduleTime') as FormArray;
     }
 
-    addStartEndTime() {
+    public addStartEndTime() {
         this.getScheduleTime().push(
             this._formBuilder.group({
                 scheduleTimeId: [''],
@@ -74,6 +74,11 @@ export class ApiEmployeeScheduleComponent implements OnInit {
     public GetAllEmployees() {
         this.appointmentService.GetAllEmployees().subscribe(result => this.employees = result, error => console.log(error));
     }
+
+    public saveSchedule() {
+        // this.appointmentService._scheduleForm = this.scheduleFormGroup;
+        this.appointmentService.saveSchedule(this.scheduleFormGroup.getRawValue());
+    }
 }
 
 interface EmployeeModel {
@@ -83,27 +88,3 @@ interface EmployeeModel {
     lastName: string,
     displayName: string
 }
-
-// interface ScheduleTimeModel {
-//     scheduleTimeId: number,
-//     timeStart: string,
-//     timeEnd: string,
-//     scheduleId: number
-// }
-
-// interface ScheduleForm {
-//     scheduleId: number,
-//     employeeId: number,
-//     dateStart: string,
-//     dateEnd: string,
-//     day: string,
-//     scheduleTime: ScheduleTimeModel[]
-// }
-
-// interface DaysForm {
-//     monday: boolean,
-//     tuesday: boolean,
-//     wednesday: boolean,
-//     thursday: boolean,
-//     friday: boolean,
-// }

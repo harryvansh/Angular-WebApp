@@ -1,5 +1,6 @@
 import { Injectable, OnInit, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 const _httpOptions = {
     headers: new HttpHeaders({
@@ -13,6 +14,7 @@ export class AppointmentService {
     public _employees: EmployeeModel[];
     public _appointmentForm: AppointmentForm;
     public _employeeForm:EmployeeForm;
+    public _scheduleForm:FormGroup;
 
     constructor(private _http: HttpClient, @Inject('BASE_URL') private _baseUrl: string) {}
 
@@ -35,6 +37,12 @@ export class AppointmentService {
         console.log("Header: " + _httpOptions.headers);
         console.log("Creating new employee.. " + JSON.stringify(this._employeeForm));
         this._http.post<EmployeeForm>(this._baseUrl + 'api/Employees/Employee', JSON.stringify(this._employeeForm), _httpOptions).subscribe(employee=>this._employeeForm);
+    }
+
+    public saveSchedule(scheduleData:FormGroup){
+        console.log("Header: " + _httpOptions.headers);
+        console.log("Creating new employee schedule.. "+ JSON.stringify(scheduleData));
+        this._http.post<FormGroup>(this._baseUrl + 'api/Schedules/Schedule', JSON.stringify(scheduleData), _httpOptions).subscribe(schedule=>scheduleData);
     }
 }
 
@@ -67,4 +75,20 @@ interface EmployeeForm {
     middleName: string,
     lastName: string,
     displayName: string
+}
+
+interface ScheduleTimeModel {
+    scheduleTimeId: number,
+    timeStart: string,
+    timeEnd: string,
+    scheduleId: number
+}
+
+interface ScheduleForm {
+    scheduleId: number,
+    employeeId: number,
+    dateStart: string,
+    dateEnd: string,
+    day: string,
+    scheduleTime: ScheduleTimeModel[]
 }
