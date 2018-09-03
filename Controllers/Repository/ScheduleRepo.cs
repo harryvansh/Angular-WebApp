@@ -18,8 +18,14 @@ namespace Angular_WebApp.Controllers.Repository
 
         public async Task<List<Schedule>> GetAllAsync()
         {
-            var Schedule = await _context.Schedules.Where(e => true).ToListAsync();
-            return Schedule;
+            var schedules = await _context.Schedules.Where(e => true).ToListAsync();
+            
+            foreach(var schedule in schedules)
+            {
+            var scheduleTimes = await _context.ScheduleTimes.Where(e => e.ScheduleId == schedule.ScheduleId).ToListAsync();
+            schedule.ScheduleTime = scheduleTimes;
+            }
+            return schedules;
         }
 
         public async Task<int> PostAsync(Schedule model)

@@ -13,16 +13,17 @@ namespace Angular_WebApp.Mapping
         CreateMap<Schedule, ScheduleViewModel>()
         .ForMember(dest => dest.DateStart, opts => opts.MapFrom(src => Convert.ToDateTime(src.DateStart).ToShortDateString()))
         .ForMember(dest => dest.DateEnd, opts => opts.MapFrom(src => Convert.ToDateTime(src.DateEnd).ToShortDateString()))
+        .ForMember(dest => dest.Days, opts => opts.MapFrom(src => convertDaysToViewModel(src.Day)))
         //need to map the other way
         ;
         CreateMap<ScheduleViewModel, Schedule>()
         .ForMember(dest => dest.DateStart, opts => opts.MapFrom(src => Convert.ToDateTime(src.DateStart).ToShortDateString()))
         .ForMember(dest => dest.DateEnd, opts => opts.MapFrom(src => Convert.ToDateTime(src.DateEnd).ToShortDateString()))
-        .ForMember(dest => dest.Day, opts => opts.MapFrom(src => convertDays(src.Days)))
+        .ForMember(dest => dest.Day, opts => opts.MapFrom(src => convertDaysToModel(src.Days)))
         ;
     }
 
-    private string convertDays(Days daysModel)
+    private string convertDaysToModel(Days daysModel)
     {
         string result = "";
         if(daysModel.Monday)
@@ -31,7 +32,7 @@ namespace Angular_WebApp.Mapping
         }
         if(daysModel.Tuesday)
         {
-            result += "Tues,";
+            result += "Tue,";
         }
         if(daysModel.Wednesday)
         {
@@ -39,7 +40,7 @@ namespace Angular_WebApp.Mapping
         }
         if(daysModel.Thursday)
         {
-            result += "Thur,";
+            result += "Thu,";
         }
         if(daysModel.Friday)
         {
@@ -55,6 +56,46 @@ namespace Angular_WebApp.Mapping
         }
 
         return result.TrimEnd(',');
+    }
+
+    private Days convertDaysToViewModel(string scheduleDays)
+    {
+        Days daysModel = new Days();
+
+        var days = scheduleDays.Split(',');
+
+        foreach(var day in days)
+        {
+            if(day.Equals("Mon"))
+            {
+                daysModel.Monday = true;
+            }
+            if(day.Equals("Tue"))
+            {
+                daysModel.Tuesday = true;
+            }
+            if(day.Equals("Wed"))
+            {
+                daysModel.Wednesday = true;
+            }
+            if(day.Equals("Thur"))
+            {
+                daysModel.Thursday = true;
+            }
+            if(day.Equals("Fri"))
+            {
+                daysModel.Friday = true;
+            }
+            if(day.Equals("Sat"))
+            {
+                daysModel.Saturday = true;
+            }
+            if(day.Equals("Sun"))
+            {
+                daysModel.Sunday = true;
+            }
+        }
+        return daysModel;        
     }
            
     }
