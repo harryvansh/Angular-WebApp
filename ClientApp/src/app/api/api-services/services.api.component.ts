@@ -8,7 +8,7 @@ const _httpOptions = {
     })
 };
 
-// @Injectable()
+@Injectable()
 export class AppointmentService {
     public _appointments: AppointmentModel[];
     public _employees: EmployeeModel[];

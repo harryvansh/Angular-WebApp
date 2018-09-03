@@ -13,5 +13,7 @@ namespace Angular_WebApp.Models
 
         [ForeignKey("Schedule")]
         public int ScheduleId { get; set; }
+
+        public Schedule Schedule {get; set;}
     }
 }

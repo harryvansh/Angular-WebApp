@@ -13,6 +13,6 @@ namespace Angular_WebApp.Models
         public string LastName { get; set; }
         public string DisplayName { get; set; }
         public List<Appointment> Appointment { get; set; }
-        public Schedule Schedule {get; set;}
+        public List<Schedule> Schedule {get; set;}
     }
 }

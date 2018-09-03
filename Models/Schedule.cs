@@ -7,6 +7,7 @@ namespace Angular_WebApp.Models
 {
     public class Schedule : AuditInfo
     {
+        [Key]
         public int ScheduleId { get; set; }
         [ForeignKey("Employee")]
         public int EmployeeId {get; set;}

@@ -64,10 +64,10 @@ export class ApiEmployeeScheduleComponent implements OnInit {
     public addStartEndTime() {
         this.getScheduleTime().push(
             this._formBuilder.group({
-                scheduleTimeId: [''],
+                scheduleTimeId: ['0'],
                 timeStart: [''],
                 timeEnd: [''],
-                scheduleId: ['']
+                scheduleId: ['0']
             }));   
     }
 
@@ -76,7 +76,6 @@ export class ApiEmployeeScheduleComponent implements OnInit {
     }
 
     public saveSchedule() {
-        // this.appointmentService._scheduleForm = this.scheduleFormGroup;
         this.appointmentService.saveSchedule(this.scheduleFormGroup.getRawValue());
     }
 }
