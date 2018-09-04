@@ -7,6 +7,7 @@ namespace Angular_WebApp.Controllers.Logic
 {
     public interface IEmployeeLogic
     {
+        Task<EmployeeViewModel> GetEmployeeByIdAsync(int employeeId);
          Task<List<EmployeeViewModel>> GetAllAsync();
          Task PostAsync(EmployeeViewModel model);
          Task PutAsync(EmployeeViewModel model);

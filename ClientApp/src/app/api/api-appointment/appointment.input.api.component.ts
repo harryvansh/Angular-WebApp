@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, NgModule } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '../../../../node_modules/@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppointmentService } from '../api-services/services.api.component';
 
 @Component({
@@ -8,7 +7,7 @@ import { AppointmentService } from '../api-services/services.api.component';
     templateUrl: "./appointment.input.api.component.html"
 })
 export class ApiAppointmentInputComponent implements OnInit {
-    private _employees: EmployeeModel[];
+    private _employees: Employee[];
     public firstFormGroup: FormGroup;
     public secondFormGroup: FormGroup;
     public thirdFormGroup: FormGroup;
@@ -47,20 +46,3 @@ export class ApiAppointmentInputComponent implements OnInit {
         }
 
 }
-
-interface AppointmentForm {
-    employeeId: number,
-    customerFirstName: string,
-    customerMiddleName: string,
-    customerLastName: string,
-    appointmentTime: Date
-}
-
-interface EmployeeModel {
-    employeeId: string,
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    displayName: string
-}
-

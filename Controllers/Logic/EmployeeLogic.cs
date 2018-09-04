@@ -18,6 +18,13 @@ namespace Angular_WebApp.Controllers.Logic
             _mapper = mapper;
         }
 
+         public async Task<EmployeeViewModel> GetEmployeeByIdAsync(int employeeId)
+        {
+            var employee = await _repo.GetEmployeeByIdAsync(employeeId);
+            var viewEmployee = _mapper.Map<EmployeeViewModel>(employee);
+            return viewEmployee;
+        }
+
         public async Task<List<EmployeeViewModel>> GetAllAsync()
         {
             var employees = await _repo.GetAllAsync();

@@ -18,11 +18,3 @@ export class ApiAppointmentComponent implements OnInit {
         this.appointmentService.getAllAppointments().subscribe(result => this.appointments = result);
     }
 }
-
-interface AppointmentModel {
-    appointmentId: number,
-    customerId: number,
-    employeeId: number,
-    appointmentTime: Date
-}
-

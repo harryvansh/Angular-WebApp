@@ -19,6 +19,27 @@ namespace Angular_WebApp.Controllers
             _logic = logic;
         }
 
+        [HttpGet("Employee/{employeeId}")]
+        public async Task<ActionResult<EmployeeViewModel>> GetEmployeeByIdAsync(int employeeId)
+        {
+            try
+            {
+
+                var employee = await _logic.GetEmployeeByIdAsync(employeeId);
+
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+                return employee;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+
+        }
+
         [HttpGet("Employee")]
         public async Task<ActionResult<List<EmployeeViewModel>>> GetEmployeesAsync()
         {

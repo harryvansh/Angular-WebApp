@@ -1,0 +1,10 @@
+<a [routerLink]="['/appointment', {outlets: {'api': ['scheduleInput-api']}}]">Set Employee Schedule</a>
+
+<div *ngFor="let schedule of schedules">
+    <mat-card>
+            <p>{{schedule.scheduleId}}</p>
+            <p>{{schedule.employeeId}}</p>
+            <p>{{schedule.dateStart}}</p>
+            <p>{{schedule.dateEnd}}</p>
+    </mat-card>
+</div>

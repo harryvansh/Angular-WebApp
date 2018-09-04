@@ -1,5 +1,4 @@
 import { Component, Inject} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppointmentService } from '../api-services/services.api.component';
 
 @Component({
@@ -8,7 +7,7 @@ import { AppointmentService } from '../api-services/services.api.component';
 })
 export class ApiEmployeeInputComponent {
 
-    public _employee:EmployeeForm = {
+    public _employee:Employee = {
             employeeId: 0,
             firstName: '',
             middleName: '',
@@ -22,12 +21,4 @@ export class ApiEmployeeInputComponent {
         this.appointmentService._employeeForm = this._employee;
         this.appointmentService.saveEmployee();
     }
-}
-
-interface EmployeeForm {
-    employeeId: number,
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    displayName: string
 }

@@ -14,7 +14,11 @@ namespace Angular_WebApp.Controllers.Repository
         {
             _context = context;
         }
-
+        public async Task<Employee> GetEmployeeByIdAsync(int employeeId)
+        {
+            var employee = await _context.Employees.Where(e => e.EmployeeId == employeeId).SingleOrDefaultAsync();
+            return employee;
+        }
         public async Task<List<Employee>> GetAllAsync()
         {
             var employee = await _context.Employees.Where(e => true).ToListAsync();
@@ -43,17 +47,17 @@ namespace Angular_WebApp.Controllers.Repository
             }
             var entities = await Task.WhenAll(tasks);
 
-            foreach(var entity in entities)
+            foreach (var entity in entities)
             {
                 _context.Remove(entity);
             }
-            
+
             await _context.SaveChangesAsync();
         }
 
         public async Task<Employee> GetEmployeeModel(int id)
         {
-            return await _context.Employees.Where(c=>c.EmployeeId == id).SingleAsync();
+            return await _context.Employees.Where(c => c.EmployeeId == id).SingleAsync();
         }
     }
 }

@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AppointmentService } from '../api-services/services.api.component';
 
 @Component({
@@ -9,7 +8,7 @@ import { AppointmentService } from '../api-services/services.api.component';
 
 export class ApiEmployeeComponent implements OnInit{
 
-    public employees:EmployeeModel[];
+    public employees:Employee[];
 
     constructor(private appointmentService: AppointmentService){}
 
@@ -21,12 +20,4 @@ export class ApiEmployeeComponent implements OnInit{
        this.appointmentService.GetAllEmployees().subscribe(result=> this.employees = result);
     }
 
-}
-
-interface EmployeeModel {
-    employeeId: string,
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    displayName: string
 }

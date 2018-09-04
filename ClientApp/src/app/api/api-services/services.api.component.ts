@@ -11,19 +11,22 @@ const _httpOptions = {
 @Injectable()
 export class AppointmentService {
     public _appointments: AppointmentModel[];
-    public _employees: EmployeeModel[];
     public _appointmentForm: AppointmentForm;
-    public _employeeForm:EmployeeForm;
-    public _scheduleForm:FormGroup;
+    public _employeeForm: Employee;
+    public _scheduleForm: Schedule;
 
-    constructor(private _http: HttpClient, @Inject('BASE_URL') private _baseUrl: string) {}
+    constructor(private _http: HttpClient, @Inject('BASE_URL') private _baseUrl: string) { }
 
     public getAllAppointments() {
         return this._http.get<AppointmentModel[]>(this._baseUrl + 'api/Appointments/Appointment', _httpOptions);
     }
 
     public GetAllEmployees() {
-        return this._http.get<EmployeeModel[]>(this._baseUrl + 'api/Employees/Employee', _httpOptions);
+        return this._http.get<Employee[]>(this._baseUrl + 'api/Employees/Employee', _httpOptions);
+    }
+
+    public GetAllSchedules() {
+        return this._http.get<Schedule[]>(this._baseUrl + 'api/Schedules/Schedule', _httpOptions);
     }
 
     public saveAppointment() {
@@ -32,63 +35,18 @@ export class AppointmentService {
         this._http.post<AppointmentForm>(this._baseUrl + 'api/Appointments/Appointment', JSON.stringify(this._appointmentForm), _httpOptions).subscribe(result => result = this._appointmentForm);
     }
 
-    public saveEmployee()
-    {
+    public saveEmployee() {
         console.log("Header: " + _httpOptions.headers);
         console.log("Creating new employee.. " + JSON.stringify(this._employeeForm));
-        this._http.post<EmployeeForm>(this._baseUrl + 'api/Employees/Employee', JSON.stringify(this._employeeForm), _httpOptions).subscribe(employee=>this._employeeForm);
+        this._http.post<Employee>(this._baseUrl + 'api/Employees/Employee', JSON.stringify(this._employeeForm), _httpOptions).subscribe(employee => this._employeeForm);
     }
 
-    public saveSchedule(scheduleData:FormGroup){
+    public saveSchedule(scheduleData: FormGroup) {
         console.log("Header: " + _httpOptions.headers);
-        console.log("Creating new employee schedule.. "+ JSON.stringify(scheduleData));
-        this._http.post<FormGroup>(this._baseUrl + 'api/Schedules/Schedule', JSON.stringify(scheduleData), _httpOptions).subscribe(schedule=>scheduleData);
+        console.log("Creating new employee schedule.. " + JSON.stringify(scheduleData));
+        this._http.post<FormGroup>(this._baseUrl + 'api/Schedules/Schedule', JSON.stringify(scheduleData), _httpOptions).subscribe(schedule => scheduleData);
     }
 }
 
-interface AppointmentModel {
-    appointmentId: number,
-    customerId: number,
-    employeeId: number,
-    appointmentTime: Date
-}
 
-interface AppointmentForm {
-    employeeId: number,
-    customerFirstName: string,
-    customerMiddleName: string,
-    customerLastName: string,
-    appointmentTime: Date
-}
 
-interface EmployeeModel {
-    employeeId: string,
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    displayName: string
-}
-
-interface EmployeeForm {
-    employeeId: number,
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    displayName: string
-}
-
-interface ScheduleTimeModel {
-    scheduleTimeId: number,
-    timeStart: string,
-    timeEnd: string,
-    scheduleId: number
-}
-
-interface ScheduleForm {
-    scheduleId: number,
-    employeeId: number,
-    dateStart: string,
-    dateEnd: string,
-    day: string,
-    scheduleTime: ScheduleTimeModel[]
-}

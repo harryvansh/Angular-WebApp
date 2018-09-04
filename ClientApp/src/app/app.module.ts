@@ -19,7 +19,9 @@ import { ApiEmployeeComponent } from './api/api-employee/employee.api.component'
 import { ApiEmployeeInputComponent } from './api/api-employee/employee.input.api.component';
 import { ApiAppointmentInputComponent } from './api/api-appointment/appointment.input.api.component';
 import { AppointmentService } from './api/api-services/services.api.component';
-import { ApiEmployeeScheduleComponent } from './api/api-employee/employee.schedule.api.component';
+import { ApiInputScheduleComponent } from './api/api-schedule/schedule.input.api.component';
+import { ApiScheduleComponent } from './api/api-schedule/schedule.api.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ApiEmployeeScheduleComponent } from './api/api-employee/employee.schedu
     ApiEmployeeComponent,
     ApiEmployeeInputComponent,
     ApiAppointmentInputComponent,
-    ApiEmployeeScheduleComponent
+    ApiInputScheduleComponent,
+    ApiScheduleComponent
 
   ],
   imports: [
@@ -53,6 +56,7 @@ import { ApiEmployeeScheduleComponent } from './api/api-employee/employee.schedu
     MatFormFieldModule,
     MatAutocompleteModule,
     FormsModule, ReactiveFormsModule,
+    MatCardModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -68,7 +72,8 @@ import { ApiEmployeeScheduleComponent } from './api/api-employee/employee.schedu
           { path: 'employees', component: ApiEmployeeComponent, outlet: 'api' },
           { path: 'employee-input', component: ApiEmployeeInputComponent, outlet: 'api' },
           { path: 'appointment-input', component: ApiAppointmentInputComponent, outlet: 'api' },
-          { path: 'employee-schedule', component: ApiEmployeeScheduleComponent, outlet: 'api' }
+          { path: 'schedule-api', component: ApiScheduleComponent, outlet: 'api' },
+          { path: 'scheduleInput-api', component: ApiInputScheduleComponent, outlet: 'api' }
         ]
       }
     ]),
