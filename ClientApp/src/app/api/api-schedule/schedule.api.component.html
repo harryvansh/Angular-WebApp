@@ -2,9 +2,36 @@
 
 <div *ngFor="let schedule of schedules">
     <mat-card>
-            <p>{{schedule.scheduleId}}</p>
-            <p>{{schedule.employeeId}}</p>
-            <p>{{schedule.dateStart}}</p>
-            <p>{{schedule.dateEnd}}</p>
+        <div *ngFor="let employee of employees">
+            <div *ngIf="schedule.employeeId == employee.employeeId">
+                <p>{{employee.firstName}}</p>
+            </div>
+        </div>
+        <p>{{schedule.dateStart | date}} - {{schedule.dateEnd | date}}</p>
+        <div *ngIf="schedule.days.monday">
+            <p>Monday</p>
+        </div>
+        <div *ngIf="schedule.days.tuesday">
+            <p>Tuesday</p>
+        </div>
+        <div *ngIf="schedule.days.wednesday">
+            <p>Wednesday</p>
+        </div>
+        <div *ngIf="schedule.days.thursday">
+            <p>Thursday</p>
+        </div>
+        <div *ngIf="schedule.days.friday">
+            <p>Friday</p>
+        </div>
+        <div *ngIf="schedule.days.saturday">
+            <p>Saturday</p>
+        </div>
+        <div *ngIf="schedule.days.sunday">
+            <p>Sunday</p>
+        </div>
+        <div *ngFor="let time of schedule.scheduleTime">
+            <p>{{time.timeStart | date: 'shortTime'}} - {{time.timeEnd | date: 'shortTime'}}</p>
+        </div>
     </mat-card>
+
 </div>

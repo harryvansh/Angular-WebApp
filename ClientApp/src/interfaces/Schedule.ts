@@ -20,6 +20,6 @@ interface Schedule {
     employeeId: number,
     dateStart: string,
     dateEnd: string,
-    day: Days,
+    days: Days,
     scheduleTime: ScheduleTimeModel[]
 }

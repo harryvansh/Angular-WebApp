@@ -29,6 +29,10 @@ export class AppointmentService {
         return this._http.get<Schedule[]>(this._baseUrl + 'api/Schedules/Schedule', _httpOptions);
     }
 
+    public GetEmployeeById(employeeId: number){
+        return this._http.get<Employee>(this._baseUrl + 'api/Employees/Employee/' + employeeId, _httpOptions);
+    }
+
     public saveAppointment() {
         console.log("Header: " + _httpOptions.headers);
         console.log("Creating new appointment.. " + JSON.stringify(this._appointmentForm));
