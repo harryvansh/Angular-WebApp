@@ -78,7 +78,7 @@ namespace Angular_WebApp.Mapping
             {
                 daysModel.Wednesday = true;
             }
-            if(day.Equals("Thur"))
+            if(day.Equals("Thu"))
             {
                 daysModel.Thursday = true;
             }

@@ -14,9 +14,9 @@ npm install --save @angular/animations@5.2.0
 ------------------------------------------------------------------
 To build in developement mode try the following:
 	
-export ASPNETCORE_ENVIRONMENT=Development
 
-[me@linuxbox me]$ export PATH=$PATH:directory
+[me@linuxbox me]export ASPNETCORE_ENVIRONMENT=Development
+$ export PATH=$PATH:directory
 
 A better way would be to edit your .bash_profile or .profile file (depending on your distribution) to include the above command. That way, it would be done automatically every time you log in.
 

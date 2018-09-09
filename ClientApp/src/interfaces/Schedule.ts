@@ -12,6 +12,7 @@ interface ScheduleTimeModel {
     scheduleTimeId: number,
     timeStart: string,
     timeEnd: string,
+    isAvailable: boolean,
     scheduleId: number
 }
 
